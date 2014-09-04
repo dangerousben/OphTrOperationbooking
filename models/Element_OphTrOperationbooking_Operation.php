@@ -102,7 +102,8 @@ class Element_OphTrOperationbooking_Operation extends BaseEventTypeElement
 			array('referral_id', 'validateReferral'),
 			array('decision_date', 'OEDateValidatorNotFuture'),
 			array('eye_id, consultant_required, anaesthetic_type_id, overnight_stay, site_id, priority_id, decision_date, total_duration', 'required'),
-			array('organising_admission_user_id', 'required', 'on' => 'insert'),
+			array('organising_admission_user_id, anaesthetist_preop_assessment, anaesthetic_choice_id, stop_medication', 'required', 'on' => 'insert'),
+			array('stop_medication_details', 'RequiredIfFieldValidator', 'field' => 'stop_medication', 'value' => true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, event_id, eye_id, consultant_required, anaesthetic_type_id, overnight_stay, site_id, priority_id, decision_date, comments, comments_rtt', 'safe', 'on' => 'search'),
@@ -156,6 +157,10 @@ class Element_OphTrOperationbooking_Operation extends BaseEventTypeElement
 			'procedures' => 'Operations',
 			'consultant_required' => 'Consultant required',
 			'anaesthetic_type_id' => 'Anaesthetic type',
+			'anaesthetist_preop_assessment' => 'Does the patient require pre-op assessment by an anaesthetist',
+			'anaesthetic_choice_id' => 'Anaesthetic choice is',
+			'stop_medication' => 'Patient needs to stop medication',
+			'stop_medication_details' => 'Please provide details',
 			'overnight_stay' => 'Post operative stay',
 			'site_id' => 'Site',
 			'priority_id' => 'Priority',
